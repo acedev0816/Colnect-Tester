@@ -71,6 +71,8 @@ function getUrlContent($url)
   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
   curl_setopt($ch, CURLOPT_COOKIESESSION, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+
   $result = curl_exec($ch);
   curl_close($ch);
   return $result;
