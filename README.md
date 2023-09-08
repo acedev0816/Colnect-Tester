@@ -5,7 +5,7 @@ Coding Style(Nameing)
 
 -Frontend
     function, variable name: camelCase
-
+    Keep responsive design 
 -Backend
     function, variable name: camelCase
     query: reserved words UPPER CASE
@@ -31,6 +31,7 @@ Project structure & Development principle
 - Frontend
     page structure: header.php + {custom_body} + footer.php
     main layout: flex-grid system
+    Keep responsive for all devices
 
 !Do not use mixture of php and html for data sharing, all data should be  fetched using ajax call
 
