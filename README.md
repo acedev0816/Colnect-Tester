@@ -14,7 +14,7 @@
 ### [Home](https://colnecttest.000webhostapp.com/)
     Here you can check url and get element count results. And also statistic information related to that domain and element.
 ### [Statistics](https://colnecttest.000webhostapp.com/statistic/)
-    Here(https://colnecttest.000webhostapp.com/statistic/) you can see statistic information.
+    Here you can see statistic information.
     You can select domain or url from the list and see statistic information related with that.
 ## Coding Style(Nameing)
 ### -DB
