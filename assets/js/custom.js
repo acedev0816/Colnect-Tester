@@ -1,6 +1,5 @@
 $(document).ready(
   () => {
-
     // SET ACTIVE MENU
     const pathname = location.pathname;
     // Calculate last path 
