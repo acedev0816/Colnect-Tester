@@ -52,3 +52,5 @@
     all GET requests are redirected to index.php
     rewrite engine ON
     allow all overrides ON
+
+## Please check code carefully and kindly hit me issues, @Colnect Team! :)
