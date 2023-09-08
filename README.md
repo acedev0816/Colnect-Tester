@@ -1,4 +1,4 @@
-# Colnect Project (https://colnecttest.000webhostapp.com/)
+# [Colnect Project](https://colnecttest.000webhostapp.com/)
 ## Technical issues solved
 ### Issue with fetching html content from url
     - If we use simple php function file_get_content, we cant control headers and request is not accepted in most of sites
@@ -11,9 +11,9 @@
     - This project used mysqli->execute_query function for queries, which is supported on php version 8+.
        The hosting provider(000webhost.com) provides php version 7 (for free versions), so changed all queries into mysqli->query format(which was a time-consuimg work :( ))
 ## Pages
-### Home
-    Here(https://colnecttest.000webhostapp.com/) you can check url and get element count results. And also statistic information related to that domain and element.
-### Statistics
+### [Home](https://colnecttest.000webhostapp.com/)
+    Here you can check url and get element count results. And also statistic information related to that domain and element.
+### [Statistics](https://colnecttest.000webhostapp.com/statistic/)
     Here(https://colnecttest.000webhostapp.com/statistic/) you can see statistic information.
     You can select domain or url from the list and see statistic information related with that.
 ## Coding Style(Nameing)
