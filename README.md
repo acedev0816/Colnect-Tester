@@ -7,6 +7,9 @@
         . If we put too less in header content, request is not accpeted. For example colnect.com :)
         . Sites built with SPA (react, vue, angular) Frameworks (which is not using SSR, eg https://leadgibbon.com) responses with 301(Permanently Moved) status code.
           This issue is fixed by adding "curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);"
+### Issue with mysql query
+    - This project used mysqli->execute_query function for queries, which is supported on php version 8+.
+       The hosting provider(000webhost.com) provides php version 7 (for free versions), so changed all queries into mysqli->query format(which was a time-consuimg work :( ))
 ## Coding Style(Nameing)
 ### -DB
     table, field name: snake_case
