@@ -1,22 +1,21 @@
-Test Project
-Coding Style(Nameing)
--DB
+# Test Project
+## Coding Style(Nameing)
+### -DB
     table, field name: snake_case
-
--Frontend
+### -Frontend
     function, variable name: camelCase
     Keep responsive design 
--Backend
+### -Backend
     function, variable name: camelCase
     query: reserved words UPPER CASE
 
--Ajax Communication
+### -Ajax Communication
     parameter name: camelCase
     data format: x-www-form-urlencoded
     method: POST
 
-Project structure & Development principle
-- Backend: 
+## Project structure & Development principle
+### - Backend: 
     api root: api/root.php
     routing information: index.php
     constants and settings information: config/*.php
@@ -28,16 +27,17 @@ Project structure & Development principle
         .status -> 0(success) 1(fail)  Like unix system call response
     api names: config/constants.php
 
-- Frontend
+### - Frontend
     page structure: header.php + {custom_body} + footer.php
     main layout: flex-grid system
-    Keep responsive for all devices
 
-!Do not use mixture of php and html for data sharing, all data should be  fetched using ajax call
+### !Do not use mixture of php and html for data sharing, all data should be  fetched using ajax call
+### All input should be checked for validation for both FE and BE
+### UI should adapt all devices (Responsive)
 
-For deployment
-- db settings: config/constant.php
-- .htaccess ettings
+# For deployment
+### - db settings: config/constant.php, db/test.sql
+### - .htaccess ettings
     all GET requests are redirected to index.php
     rewrite engine ON
     allow all overrides ON
