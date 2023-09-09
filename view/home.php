@@ -16,6 +16,16 @@
           <span id="loading">Check</span>
         </button>
       </form>
+      <div class="statistic-panel" id="statisticPanel">
+        <p>Average fetch time from domain during 24hours: </p>
+        <p class="result" id="average_fetch_time"></p>
+        <p>Urls fetched from domain: </p>
+        <p class="result" id="urls_from_domain"></p>
+        <p>Total &lt;<span id="span_element_name1">___</span>&gt; elements fetched from <span id="span_domain_name">___</span>:</p>
+        <p class="result" id="elements_from_domain"></p>
+        <p>Total &lt;<span id="span_element_name2">___</span>&gt; elements fetched so far:</p>
+        <p class="result" id="elements_so_far"></p>
+      </div>
     </div>
   </div>
   </main>

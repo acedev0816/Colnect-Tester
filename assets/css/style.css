@@ -204,6 +204,7 @@ body {
 /* Form */
 form {
   max-width: 500px;
+  margin-bottom: 30px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 1px 2px 8px #333333;
@@ -243,13 +244,15 @@ form input, form select {
 .scrapeBtn:disabled {
   cursor: not-allowed;
 }
+
 /* The alert message box */
 .alert {
   opacity: 0;
+  max-height: 80px;
   padding: 20px;
   background-color: #f44336; /* Red */
   color: white;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   transition: .5s;
 }
 
@@ -272,6 +275,16 @@ form input, form select {
   color: black;
 }
 
+/* Statistic panel */
+.statistic-panel {
+  display: none;
+  width: 500px;
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 8px #333333;
+}
+
 /* 404 Page */
 h1.fof {
   font-size: 50px;
@@ -286,7 +299,7 @@ h1.fof {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  height: calc(100vh - 148px);
+  height: calc(100vh - 48px);
 }
 
 .mx-auto {
@@ -298,10 +311,10 @@ h1.fof {
   border: 4px solid #f3f3f3;
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
-  border-top: 5px solid #555;
+  border-top: 5px solid #888888;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 21px;
+  height: 21px;
 }
 
 
