@@ -16,12 +16,16 @@ $(document).ready(
     // Submit action on submit form
     $("#scrapeForm").on("submit", (e) => {
       e.preventDefault();
+      $(".scrapeBtn").attr("disabled", true);
+      $("#loading").text("").addClass("loading");
 
       $.post(API_URL, {
         api: "SCRAPE_URL",
         url: url.value,
         element: element.value
       }, (response) => {
+        $(".scrapeBtn").attr("disabled", false);
+        $("#loading").text("Check").removeClass("loading");
         response = JSON.parse(response);
 
         if (response.status === 0) {

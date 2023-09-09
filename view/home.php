@@ -12,7 +12,9 @@
         <label for="element">Element:</label>
         <input type="text" id="element" name="element" placeholder="Please input element" required>
 
-        <input type="submit" value="Check">
+        <button type="submit" value="Check" class="scrapeBtn">
+          <span id="loading">Check</span>
+        </button>
       </form>
     </div>
   </div>
