@@ -2,25 +2,25 @@
 include_once "util.php";
 
 /** Get scraped data */
-function scrapeData()
+function scrapeData($url, $element)
 {
   // Parsing url seperately and if it is not valide return error message
-  $url = parseUrl($_POST["url"]);
+  $url = parseUrl($url);
 
   if ($url["msg"] !== "success") {
     return $url;
   }
 
   // Check Request URL
-  $recent_result = getRecentResult($url["domain"], $url["path"], $_POST["element"]);
+  $recent_result = getRecentResult($url["domain"], $url["path"], $element);
   $scrapeData = null;
   if ($recent_result)
     $scrapeData = $recent_result;
   else // Scrape data
-    $scrapeData = getData($url, $_POST["element"]);
+  $scrapeData = getData($url, $element);
 
   if ($scrapeData["msg"] === "success") {
-    $result = saveData($url, $_POST["element"], $scrapeData);
+    $result = saveData($url, $element, $scrapeData);
   } else {
     $result["msg"] = $scrapeData["msg"];
   }
