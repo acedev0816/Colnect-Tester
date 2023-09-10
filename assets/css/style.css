@@ -204,6 +204,7 @@ body {
 /* Form */
 form {
   max-width: 500px;
+  margin-bottom: 30px;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 1px 2px 8px #333333;
@@ -220,7 +221,10 @@ form input, form select {
   font-size:16px;
 }
 
-input[type=submit] {
+.scrapeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   background-color: #2196F3;
   color: white;
@@ -230,19 +234,25 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   transition: .4s;
+  font-size: 18px;
 }
 
-input[type=submit]:hover {
+.scrapeBtn:hover {
   opacity: .5;
+}
+
+.scrapeBtn:disabled {
+  cursor: not-allowed;
 }
 
 /* The alert message box */
 .alert {
   opacity: 0;
+  max-height: 80px;
   padding: 20px;
   background-color: #f44336; /* Red */
   color: white;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   transition: .5s;
 }
 
@@ -265,6 +275,16 @@ input[type=submit]:hover {
   color: black;
 }
 
+/* Statistic panel */
+.statistic-panel {
+  display: none;
+  width: 500px;
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 8px #333333;
+}
+
 /* 404 Page */
 h1.fof {
   font-size: 50px;
@@ -279,17 +299,43 @@ h1.fof {
   justify-content: center;
   align-items: center;
   flex-flow: column;
-  height: calc(100vh - 148px);
+  height: calc(100vh - 48px);
 }
 
 .mx-auto {
   margin: auto;
 }
 
+.loading {
+  display: flex;
+  border: 4px solid #f3f3f3;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-top: 5px solid #888888;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+}
+
+
 /* Animation */
 @keyframes type{
   from{box-shadow: inset -3px 0px 0px #888;}
   to{box-shadow: inset -3px 0px 0px transparent;}
+}
+
+@keyframes spin {
+  0% { 
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 /* statistic */

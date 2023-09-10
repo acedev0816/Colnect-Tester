@@ -2,27 +2,42 @@
 include_once "util.php";
 
 /** Get scraped data */
-function scrapeData()
+function scrapeData($url, $element)
 {
   // Parsing url seperately and if it is not valide return error message
-  $url = parseUrl($_POST["url"]);
+  $url = parseUrl($url);
 
   if ($url["msg"] !== "success") {
     return $url;
   }
 
   // Check Request URL
-  $recent_result = getRecentResult($url["domain"], $url["path"], $_POST["element"]);
+  $recent_result = getRecentResult($url["domain"], $url["path"], $element);
   $scrapeData = null;
-  if ($recent_result)
-    $scrapeData = $recent_result;
-  else // Scrape data
-    $scrapeData = getData($url, $_POST["element"]);
 
+  if ($recent_result) { // if the request is same 
+    $scrapeData = $recent_result;
+  } else { // Scrape data
+    $scrapeData = getData($url, $element);
+  }
+
+  // Save scraped data, when scraping is success
   if ($scrapeData["msg"] === "success") {
-    $result = saveData($url, $_POST["element"], $scrapeData);
+    $savedData = saveData($url, $element, $scrapeData);
   } else {
-    $result["msg"] = $scrapeData["msg"];
+    return $scrapeData;
+  }
+
+  // Get statistic data when the saving is successs
+  if ($savedData["msg"] === "success") {
+    $staData["averageTime"] = getAverageFetchTime($savedData["staData"]["domainId"]);
+    $staData["urlCount"] = getUrlCountFromDomain($savedData["staData"]["domainId"]);
+    $staData["elementCount"] = getElementCount($savedData["staData"]["elementId"]);
+    $staData["elementDomain"] = getElementCountFromDomain($savedData["staData"]["domainId"], $savedData["staData"]["elementId"]);
+
+    $result = array("msg" => "success", "scrapeData" => $savedData["data"], "staData" => $staData);
+  } else {
+    $result["msg"] = $savedData["msg"];
   }
 
   return $result;
@@ -165,8 +180,9 @@ function saveData($url, $element, $scrapeData)
   $requestId = Database::$connection->insert_id;
 
   if ($requestId) {
-    $data = "URL " . $url["domain"] . "/" . $url["path"] . " fetched on " . $scrapeData["time"] . ", took " . $scrapeData["duration"] . " msec. Element <" . $element . "> appeared " . $scrapeData["count"] . " times in page.";
-    $result = array("msg" => "success", "data" => $data);
+    $data = array("domain" => $url["domain"], "path" => $url["path"], "time" => $scrapeData["time"], "duration" => $scrapeData["duration"], "element" => $element, "count" => $scrapeData["count"]);
+    $staData = array("domainId" => $domainId, "elementId" => $elementId);
+    $result = array("msg" => "success", "data" => $data, "staData" => $staData);
   } else {
     $result = array("msg" => "Something went wrong when saving response data.");
   }

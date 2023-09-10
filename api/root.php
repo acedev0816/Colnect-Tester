@@ -15,7 +15,7 @@ if (isset($_POST['api'])) {
   
   switch ($api) {
     case SCRAPE_URL: // Scrape url api
-      $data = scrapeData();
+      $data = scrapeData($_POST["url"], $_POST["element"]);
       break;
     case GET_DOMAIN_LIST:
       $data = getDomainList();
@@ -24,16 +24,16 @@ if (isset($_POST['api'])) {
       $data = getElementList();
       break;
     case GET_AVERAGE_FETCH_TIME:
-      $data = getAverageFetchTime();
+      $data = getAverageFetchTime($_POST["domainId"]);
       break;
     case GET_URL_COUNT_FROM_DOMAIN:
-      $data = getUrlCountFromDomain();
+      $data = getUrlCountFromDomain($_POST["domainId"]);
       break;
     case GET_ELEMENT_COUNT:
-      $data = getElementCount();
+      $data = getElementCount($_POST["elementId"]);
       break;
     case GET_ELEMENT_COUNT_FROM_DOMAIN:
-      $data = getElementCountFromDomain();
+      $data = getElementCountFromDomain($_POST["domainId"], $_POST["elementId"]);
   }
   echo json_encode(array("status" => 0, "data" => $data));
 } else { // Invalid api request
