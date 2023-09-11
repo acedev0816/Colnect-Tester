@@ -7,9 +7,9 @@
       $res_list = explode('/', $res);
       $domain = $res_list[0];
       
+      $path = substr($res, strlen($domain)+1);
       if (substr($domain,0,4) === "www.")  // "wwww." is optional
         $domain = substr($domain,4);
-      $path = substr($res, strlen($domain)+1);
 
       $result = array("domain"=>$domain, "path"=>$path, "msg"=>"success");
     } else {
