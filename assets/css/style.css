@@ -248,12 +248,14 @@ form input, form select {
 /* The alert message box */
 .alert {
   opacity: 0;
-  max-height: 80px;
+  height: auto;
+  max-width: 800px;
   padding: 20px;
   background-color: #f44336; /* Red */
   color: white;
   margin-bottom: 30px;
   transition: .5s;
+  word-wrap: break-word;
 }
 
 .alert.success {

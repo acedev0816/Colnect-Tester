@@ -119,12 +119,14 @@ function getData($url, $element)
     
     $xpath = new DOMXPath($doc);
     
-    $count = $xpath->query("//" . $element)->length;
+    $elements = $xpath->query("//" . $element);
     
     // If there is no element, return error message, else return data
-    if (!$count) {
+    if (!$elements || $elements->length === 0) {
       $result["msg"] = "No such element that you find.";
+      return $result;
     } else {
+      $count = $elements->length;
       $result = array("time" => $time, "duration" => $timestamp, "count" => $count, "msg" => "success");
     }
   } catch (Exception $e){
@@ -141,7 +143,7 @@ function saveData($url, $element, $scrapeData)
   $result = Database::$connection->query($query);
 
   if ($result->num_rows === 0) {
-    $query = "INSERT INTO element (name) VALUES (?)";
+    $query = "INSERT INTO element (name) VALUES ('".$element."')";
     $result = Database::$connection->query($query);
     $elementId = Database::$connection->insert_id;
   } else {
@@ -165,7 +167,6 @@ function saveData($url, $element, $scrapeData)
   $path = $url["path"];
   $query = "SELECT id FROM url WHERE path='".$path."' AND domain_id=".$domainId." LIMIT 1";
   $result = Database::$connection->query($query);
-
 
   if ($result->num_rows === 0) {
     $query = "INSERT INTO url (path, domain_id) VALUES ('".$path."',".$domainId.")";

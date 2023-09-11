@@ -10,7 +10,7 @@
         <input type="url" id="url" name="url" placeholder="Please input URL" required>
 
         <label for="element">Element:</label>
-        <input type="text" id="element" name="element" placeholder="Please input element" required>
+        <input type="text" id="element" name="element" placeholder="Please input element" pattern="[a-zA-Z0-9]+" required>
 
         <button type="submit" value="Check" class="scrapeBtn">
           <span id="loading">Check</span>
