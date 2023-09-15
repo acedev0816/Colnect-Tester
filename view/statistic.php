@@ -23,7 +23,6 @@
       <p class="result" id="elements_from_domain">___</p>
       <p>Total &lt;<span id="span_element_name2">___</span>&gt; elements fetched so far</p>
       <p class="result" id="elements_so_far">___</p>
-      <!-- <input type="submit" value="Submit"> -->
     </form>
   </div>
 </div>
