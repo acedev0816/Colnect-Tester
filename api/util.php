@@ -19,6 +19,7 @@
     return $result;
   }
 
+  // query result to array
   function queryResultToArray($result){
     $rows = [];
     while ($row = $result->fetch_assoc())
