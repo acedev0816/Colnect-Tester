@@ -98,15 +98,11 @@ function getData($url, $element)
 {
   $timestamp = microtime(true);
   $html = getUrlContent("https://" . $url["domain"] . "/" . $url["path"]); // Scrape url
-  // var_dump("https://" . $url["domain"] . "/" . $url["path"]);
-  // var_dump($url["domain"]);
-  // var_dump($url["path"]);
+
   if (!$html) {
     $result["msg"] = "Invalid URL.";
     return $result;
   }
-
-  // var_dump($html);
 
   $time = date('Y-m-d H:i:s');
   $timestamp = intval((microtime(true) - $timestamp) * 1000);
