@@ -189,4 +189,4 @@ function saveData($url, $element, $scrapeData)
   }
 
   return $result;
-}
+} 
