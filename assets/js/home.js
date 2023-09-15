@@ -16,6 +16,8 @@ $(document).ready(
     // Submit action on submit form
     $("#scrapeForm").on("submit", (e) => {
       e.preventDefault();
+
+      // Clear alert and panel, add lazyloading
       $("#alert").removeClass("success").css({"opacity": 0});
       $("#statisticPanel").fadeOut();
       $(".scrapeBtn").attr("disabled", true);
@@ -35,7 +37,7 @@ $(document).ready(
         if (response.status === 0) {
           if (response.data.msg === "success") { // Show response data
             $("#alert").addClass("success").css({"opacity": 1});
-            $("#alertMessage").html(`URL ${response.data.scrapeData.domain}/${response.data.scrapeData.path} fetched on ${response.data.scrapeData.time}, took ${response.data.scrapeData.duration} msec.<br />Element '${response.data.scrapeData.element}' appeared ${response.data.scrapeData.count} times in page.`);
+            $("#alertMessage").html(`URL <b>${response.data.scrapeData.domain}/${response.data.scrapeData.path}</b> fetched on <b>${response.data.scrapeData.time}</b>, took <b>${response.data.scrapeData.duration}</b> msec. Element <b>'${response.data.scrapeData.element}'</b> appeared <b>${response.data.scrapeData.count}</b> times in page.`);
 
             $("#statisticPanel").fadeIn();
             $("#average_fetch_time").text(response.data.staData.averageTime + "(ms)");

@@ -71,8 +71,8 @@ function getUrlContent($url)
   $host = $parts['host'];
   $ch = curl_init();
   $header = array(
-    'GET /1575051 HTTP/1.1',
     "Host: {$host}",
+    // 'GET /1575051 HTTP/1.1',
     // 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     // 'Accept-Language:en-US,en;q=0.8',
     // 'Cache-Control:max-age=0',
@@ -104,7 +104,6 @@ function getData($url, $element)
     return $result;
   }
 
-
   $time = date('Y-m-d H:i:s');
   $timestamp = intval((microtime(true) - $timestamp) * 1000);
   
@@ -116,12 +115,14 @@ function getData($url, $element)
     
     $xpath = new DOMXPath($doc);
     
-    $count = $xpath->query("//" . $element)->length;
+    $elements = $xpath->query("//" . $element);
     
     // If there is no element, return error message, else return data
-    if (!$count) {
+    if (!$elements || $elements->length === 0) {
       $result["msg"] = "No such element that you find.";
+      return $result;
     } else {
+      $count = $elements->length;
       $result = array("time" => $time, "duration" => $timestamp, "count" => $count, "msg" => "success");
     }
   } catch (Exception $e){
@@ -138,7 +139,7 @@ function saveData($url, $element, $scrapeData)
   $result = Database::$connection->query($query);
 
   if ($result->num_rows === 0) {
-    $query = "INSERT INTO element (name) VALUES (?)";
+    $query = "INSERT INTO element (name) VALUES ('".$element."')";
     $result = Database::$connection->query($query);
     $elementId = Database::$connection->insert_id;
   } else {
@@ -162,7 +163,6 @@ function saveData($url, $element, $scrapeData)
   $path = $url["path"];
   $query = "SELECT id FROM url WHERE path='".$path."' AND domain_id=".$domainId." LIMIT 1";
   $result = Database::$connection->query($query);
-
 
   if ($result->num_rows === 0) {
     $query = "INSERT INTO url (path, domain_id) VALUES ('".$path."',".$domainId.")";
