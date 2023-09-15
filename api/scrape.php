@@ -71,8 +71,8 @@ function getUrlContent($url)
   $host = $parts['host'];
   $ch = curl_init();
   $header = array(
-    'GET /1575051 HTTP/1.1',
     "Host: {$host}",
+    // 'GET /1575051 HTTP/1.1',
     // 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     // 'Accept-Language:en-US,en;q=0.8',
     // 'Cache-Control:max-age=0',
