@@ -104,7 +104,6 @@ function getData($url, $element)
     return $result;
   }
 
-  // var_dump($html);
 
   $time = date('Y-m-d H:i:s');
   $timestamp = intval((microtime(true) - $timestamp) * 1000);
